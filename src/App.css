@@ -1,0 +1,437 @@
+* { box-sizing: border-box; }
+html, body, #root { 
+  min-height: 100%; 
+  background: #0a0e12 !important; 
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg: #0a0e12;
+  --card: #0f1419;
+  --muted: #8b92a9;
+  --accent: #00d9ff;
+  --accent-2: #00ff88;
+  --accent-3: #ff006e;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --radius: 16px;
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.5);
+}
+body {
+  font-family: "Inter", "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
+  color: #e8ecf1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center; 
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto;
+  padding: 32px;
+  background: transparent;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.container > h1 {
+  margin: 0 0 32px 0;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 50%, #ff006e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(0, 217, 255, 0.2);
+  text-align: center; 
+}
+
+.section { 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 32px; 
+  animation: fadeInUp 0.6s ease-out; 
+}
+
+.section h3 { 
+  margin: 0 0 16px 0; 
+  font-size: 16px; 
+  font-weight: 700; 
+  color: #f0f4f8; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  opacity: 0.9; 
+  text-align: center; 
+}
+
+.row { 
+  display: flex; 
+  gap: 16px; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  width: 100%;
+}
+
+input, select {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1.5px solid rgba(0, 217, 255, 0.2);
+  color: #e8ecf1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 120px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-sm);
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(0, 255, 136, 0.03));
+  box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1), var(--shadow-md);
+  transform: translateY(-2px);
+}
+select option {
+  background-color: var(--card);
+  color: #e8ecf1;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.toggle-group { 
+  display: flex; 
+  gap: 10px; 
+  justify-content: center; 
+}
+.toggle-btn {
+  background: rgba(255,255,255,0.02);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  color: #c1c7d0;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.05);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+}
+.toggle-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 217, 255, 0.3);
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0, 217, 255, 0.12);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 160px; 
+  height: 220px; 
+  text-align: center; 
+  color: #e8ecf1;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 217, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(0, 255, 136, 0.04));
+}
+
+.card img {
+  width: 80px; height: 80px; object-fit: contain; margin: 0;
+  filter: drop-shadow(0 4px 12px rgba(0, 217, 255, 0.2)); transition: transform 0.3s ease;
+}
+
+.btn {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+  transition: all 0.25s ease;
+  margin: 0;
+  width: 100%;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0, 255, 136, 0.3); filter: brightness(1.1); }
+.btn:active { transform: translateY(-1px); }
+
+.drinks-scroll {
+  display: grid; 
+  grid-auto-flow: column; 
+  grid-auto-columns: 210px; 
+  grid-template-rows: auto auto; 
+  gap: 16px; 
+  align-items: start; 
+  justify-content: center; 
+  overflow-x: auto; 
+  overflow-y: hidden;
+  padding: 16px 8px 32px 8px; 
+  scroll-behavior: smooth; 
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  width: 100%;
+}
+.drinks-scroll::-webkit-scrollbar { display: none; }
+
+.drink-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0, 217, 255, 0.12);
+  border-radius: 14px;
+  padding: 16px 12px;
+  width: 190px;
+  height: 260px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px; 
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  color: #e8ecf1;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.drink-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 217, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(0, 255, 136, 0.04));
+}
+.drink-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.3), transparent);
+}
+
+.drink-card img {
+  width: 70px; height: 70px; object-fit: contain; margin: 0;
+  filter: drop-shadow(0 4px 12px rgba(0, 217, 255, 0.2)); transition: transform 0.3s ease;
+}
+.drink-card:hover img { transform: scale(1.1) rotate(2deg); }
+
+.drink-card .name { font-weight: 700; font-size: 15px; color: #f0f4f8; margin: 0; text-align: center; }
+.drink-card .meta { font-size: 12px; color: var(--muted); margin: 0; font-weight: 500; text-align: center; }
+
+.drink-card select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  background: rgba(0, 217, 255, 0.1) url('data:image/svg+xml;utf8,<svg fill="%23e8ecf1" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+  background-size: 16px;
+  border: 1.5px solid rgba(0, 217, 255, 0.3);
+  color: #e8ecf1;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: auto; 
+  margin-bottom: 0; 
+}
+
+.remove-btn {
+  position: absolute; 
+  top: 8px;           
+  right: 8px;         
+  background: rgba(255, 0, 110, 0.1);
+  border: 1px solid rgba(255, 0, 110, 0.3);
+  color: #ff4d94;
+  border-radius: 50%; 
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 14px;    
+  transition: all 0.2s ease;
+  width: 32px;        
+  height: 32px; 
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  z-index: 10;        
+}
+.remove-btn:hover { 
+  background: rgba(255, 0, 110, 0.8); 
+  border-color: #ff006e; 
+  color: #fff; 
+  transform: scale(1.1); 
+  box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4); 
+}
+.remove-btn:active { transform: scale(0.95); }
+
+.size-wrapper {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  margin-top: auto; padding-top: 15px; width: 100%;
+}
+.size-chip {
+  background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 217, 255, 0.2);
+  color: var(--muted); padding: 6px 12px; border-radius: 8px; font-size: 12px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none; flex: 1; min-width: 45px; text-align: center;
+}
+.size-chip:hover { background: rgba(0, 217, 255, 0.1); border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+.size-chip.selected {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #000; border-color: transparent; box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+}
+
+.result-grid { 
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap;     
+  gap: 16px; 
+  justify-content: center; 
+  align-items: stretch;
+  width: 100%;
+  max-width: 800px; 
+}
+
+.result-box {
+  flex: 1; 
+  min-width: 250px; 
+  
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  border: 1px solid rgba(0, 217, 255, 0.1); 
+  padding: 24px; 
+  border-radius: 14px;
+  text-align: center; 
+  color: #e8ecf1; 
+  box-shadow: var(--shadow-md); 
+  transition: all 0.3s ease;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-box:hover { 
+  transform: translateY(-4px); 
+  border-color: var(--accent); 
+  box-shadow: 0 16px 40px rgba(0, 217, 255, 0.15); 
+}
+.result-box.green { 
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 217, 255, 0.05)); 
+  border-color: rgba(0, 255, 136, 0.3); 
+  color: #00ff88; 
+  font-weight: 700;
+  font-size: 20px; 
+}
+.result-box h2 {
+  font-size: 42px; 
+  margin: 0 0 8px 0; 
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d9ff, #00ff88);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+}
+
+.volume-options { 
+  display: flex; 
+  gap: 10px; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+.volume-btn {
+  padding: 10px 14px; border-radius: 12px; border: 1.5px solid rgba(0, 217, 255, 0.2);
+  background: rgba(255,255,255,0.02); color: #c1c7d0; cursor: pointer;
+  font-weight: 600; font-size: 13px; transition: all 0.25s ease;
+}
+.volume-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(0, 217, 255, 0.05); }
+.volume-btn.active {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-color: transparent; color: #000; font-weight: 700; box-shadow: 0 6px 20px rgba(0, 217, 255, 0.25);
+}
+
+.remove-btn:focus, .drink-card select:focus, .toggle-btn:focus, .btn:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) {
+  .container { padding: 20px; }
+  .drinks-scroll { 
+    grid-auto-columns: 180px; 
+    gap: 12px; 
+  }
+  .drink-card { width: 160px; height: 260px; }
+  .card { width: 140px; }
+}
+
+@media (max-width: 640px) {
+  body { padding: 12px 8px; }
+  .container { padding: 16px; }
+  .container > h1 {
+  margin: 0 0 32px 0;
+  padding: 10px 0;
+  line-height: 1.2; 
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 50%, #ff006e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 10px rgba(0, 217, 255, 0.2)); 
+  
+  text-align: center; 
+}
+  .drinks-scroll { 
+    grid-auto-columns: 160px; 
+    gap: 12px; 
+    padding: 12px 6px 16px 6px; 
+  }
+  .drink-card { 
+    width: 140px; 
+    height: 240px; 
+    padding: 12px 8px; 
+  }
+  .drink-card img { width: 60px; height: 60px; }
+  .remove-btn { width: 32px; height: 32px; font-size: 14px; top: 6px; right: 6px;}
+}
